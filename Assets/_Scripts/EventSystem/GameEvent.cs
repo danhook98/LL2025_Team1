@@ -5,6 +5,8 @@ namespace CannonGame.EventSystem
 {
     public class GameEvent<T> : ScriptableObject
     {
+        [SerializeField] private string description; 
+
         private readonly List<GameEventListener<T>> _listeners = new();
 
         public void Register(GameEventListener<T> listener)
