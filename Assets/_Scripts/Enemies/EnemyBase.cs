@@ -1,3 +1,4 @@
+using Unity.Behavior;
 using UnityEngine;
 
 namespace CannonGame
@@ -6,13 +7,17 @@ namespace CannonGame
     {
         //base script which enemies will inherit from. Add to as needed. (eg if theres code a lot of enemies use you might as well put it in here and reference it)
 
-        [SerializeField] GameObject player;
-        [SerializeField] float speed;
+        BehaviorGraphAgent agent;
+		private void Start()
+		{
+            Init();
+		}
 
-        //call in enemy start function
-        void Init()
+		//call in enemy start function
+		void Init()
         {
-			player = GameObject.FindGameObjectWithTag("Player");
+            agent = GetComponent<BehaviorGraphAgent>();
+            agent.SetVariableValue("Player", GameObject.FindGameObjectWithTag("Player"));
 		}
     }
 }
