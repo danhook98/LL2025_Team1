@@ -56,5 +56,7 @@ namespace CannonGame.Audio
             audioSourceMusic.volume = audioData.volume;
             audioSourceMusic.Play();
         }
+
+        public void StopMusic() => audioSourceMusic.Stop();
     }
 }
