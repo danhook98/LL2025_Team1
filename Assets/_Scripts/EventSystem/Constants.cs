@@ -7,8 +7,8 @@ namespace CannonGame.EventSystem
         private const string _gameName = "CannonGame";
 
         // Menu strings.
-        internal const string MenuName = _gameName + "/Events (base)/";
-        internal const string MenuNameCustom = _gameName + "/Events (custom)/";
+        internal const string MenuName = _gameName + "/Events/Base/";
+        internal const string MenuNameCustom = _gameName + "/Events/Custom/";
 
         // Menu ordering.
         private const int _menuOrderBase = 0;
