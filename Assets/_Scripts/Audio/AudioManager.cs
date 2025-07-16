@@ -38,5 +38,19 @@ namespace CannonGame.Audio
 
             audioSourceSFX.PlayOneShot(audioSourceSFX.clip, audioData.volume);
         }
+
+        public void PlayMusic(AudioDataSO audioData)
+        {
+            if (!audioData.clip)
+            {
+                Debug.LogWarning($"<color=red>Audio Manager</color>: Attempted to play audio music for " +
+                                 $"{audioData.name}, but clip data is null.");
+                return;
+            }
+
+            audioSourceMusic.clip = audioData.clip;
+            audioSourceMusic.volume = audioData.volume;
+            audioSourceMusic.Play();
+        }
     }
 }
