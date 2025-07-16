@@ -31,6 +31,12 @@ namespace CannonGame.Audio
 
                 audioSourceMusic = gameObject.AddComponent<AudioSource>();
             }
+
+            if (!audioMixer)
+            {
+                Debug.LogWarning("<color=red>AudioManager</color>: audio mixer not set, all volume levels will be " +
+                                 "at their default values.");
+            }
         }
 
         private void Start() => LoadVolume();
