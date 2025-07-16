@@ -1,11 +1,15 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace CannonGame.Audio
 {
     public class AudioManager : MonoBehaviour
     {
+        [Header("Audio Sources")]
         [SerializeField] private AudioSource audioSourceSFX;
         [SerializeField] private AudioSource audioSourceMusic;
+        [Space]
+        [SerializeField] private AudioMixer audioMixer;
 
         private void Awake()
         {

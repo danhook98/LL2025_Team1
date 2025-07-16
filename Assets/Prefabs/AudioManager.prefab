@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSourceSFX: {fileID: 8729128681257832963}
   audioSourceMusic: {fileID: 2788999070941104386}
+  audioMixer: {fileID: 24100000, guid: bfaac17886a3db54e9dbc4a0d114a05a, type: 2}
 --- !u!114 &626973260712146209
 MonoBehaviour:
   m_ObjectHideFlags: 0
