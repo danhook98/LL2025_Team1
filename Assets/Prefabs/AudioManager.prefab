@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 206822883293994869}
   - component: {fileID: 3221408614495379008}
+  - component: {fileID: 626973260712146209}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -48,6 +49,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSourceSFX: {fileID: 8729128681257832963}
   audioSourceMusic: {fileID: 2788999070941104386}
+--- !u!114 &626973260712146209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4870524418833078449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b73d433ee7c7b748ba619714e6587b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToListen: {fileID: 11400000, guid: 09ba0dd42cc20d147bc9cf59a1a40f22, type: 2}
+  onEventInvoked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3221408614495379008}
+        m_TargetAssemblyTypeName: CannonGame.Audio.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5192245616031060172
 GameObject:
   m_ObjectHideFlags: 0
