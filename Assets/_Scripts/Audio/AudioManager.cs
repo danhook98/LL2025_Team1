@@ -13,7 +13,7 @@ namespace CannonGame.Audio
             if (!audioSourceSFX)
             {
                 Debug.LogWarning("<color=red>AudioManager</color>: SFX audio source not assigned or is invalid, " +
-                    "creating a temporary one. Expect weird behaviour.");
+                                 "creating a temporary one. Expect weird behaviour.");
 
                 audioSourceSFX = gameObject.AddComponent<AudioSource>();
             }
@@ -21,10 +21,22 @@ namespace CannonGame.Audio
             if (!audioSourceMusic)
             {
                 Debug.LogWarning("<color=red>AudioManager</color>: music audio source not assigned or is invalid, " +
-                    "creating a temporary one. Expect weird behaviour.");
+                                 "creating a temporary one. Expect weird behaviour.");
 
                 audioSourceMusic = gameObject.AddComponent<AudioSource>();
             }
+        }
+
+        public void PlaySFX(AudioDataSO audioData)
+        {
+            if (!audioData.clip)
+            {
+                Debug.LogWarning($"<color=red>Audio Manager</color>: Attempted to play audio one shot for " +
+                                 $"{audioData.name}, but clip data is null.");
+                return;
+            }
+
+            audioSourceSFX.PlayOneShot(audioSourceSFX.clip, audioData.volume);
         }
     }
 }
