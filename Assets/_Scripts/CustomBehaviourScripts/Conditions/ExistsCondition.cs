@@ -8,22 +8,22 @@ public partial class ExistsCondition : Condition
 {
 	[SerializeReference] public BlackboardVariable<GameObject> Object;
 	public override bool IsTrue()
-    {
-        if(Object.Value == null)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+	{
+		if (Object.Value == null)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
-    public override void OnStart()
-    {
-    }
+	public override void OnStart()
+	{
+	}
 
-    public override void OnEnd()
-    {
-    }
+	public override void OnEnd()
+	{
+	}
 }
