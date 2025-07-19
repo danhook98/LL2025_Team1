@@ -13,5 +13,10 @@ namespace CannonGame
         {
             _rigidbody2d = GetComponent<Rigidbody2D>();
         }
+
+        private void Start()
+        {
+            _rigidbody2d.AddForce(transform.up * launchSpeed, ForceMode2D.Impulse);
+        }
     }
 }
