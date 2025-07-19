@@ -7,6 +7,7 @@ namespace CannonGame
         [SerializeField] private float rotationSpeed = 5f;
         [Space]
         [SerializeField] private Transform firePoint;
+        [SerializeField] private Projectile projectilePrefab; 
 
         private Camera _camera; 
         private Transform _transform;
