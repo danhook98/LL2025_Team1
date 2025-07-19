@@ -5,7 +5,7 @@ namespace CannonGame
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class Projectile : MonoBehaviour
     {
-        [SerializeField] private float launchSpeed;
+        [SerializeField] private float launchSpeed = 10f;
 
         private Rigidbody2D _rigidbody2d;
 
