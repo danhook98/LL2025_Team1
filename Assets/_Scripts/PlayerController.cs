@@ -25,6 +25,11 @@ namespace CannonGame
             _mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
 
             RotateTurret();
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+            }
         }
 
         private void RotateTurret()
