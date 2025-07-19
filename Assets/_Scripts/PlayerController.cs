@@ -5,6 +5,8 @@ namespace CannonGame
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float rotationSpeed = 5f;
+        [Space]
+        [SerializeField] private Transform firePoint;
 
         private Camera _camera; 
         private Transform _transform;
