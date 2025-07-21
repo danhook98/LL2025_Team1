@@ -47,9 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9c08c2002cb5b409e0f7222fff0d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
+  rotationSpeed: 10
   firePoint: {fileID: 5539889004818712969}
   projectilePrefab: {fileID: 2938688817486375890, guid: 9fa5391899d104447814dbe776576cc5, type: 3}
+  fireDelay: 0.12
 --- !u!1 &7449021303089590538
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,13 +75,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7449021303089590538}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2744049155106761561}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &7869516070734840148
 GameObject:
   m_ObjectHideFlags: 0
