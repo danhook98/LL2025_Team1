@@ -54,7 +54,7 @@ namespace CannonGame.Audio
                 return;
             }
 
-            audioSourceSFX.PlayOneShot(audioSourceSFX.clip, audioData.volume);
+            audioSourceSFX.PlayOneShot(audioData.clip, audioData.volume);
         }
 
         /// <summary>
