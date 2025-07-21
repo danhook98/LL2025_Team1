@@ -6,15 +6,24 @@ namespace CannonGame
     {
         [SerializeField] private float rotationSpeed = 5f;
 
+        [Header("Shooting")]
+        [SerializeField] private Transform firePoint;
+        [SerializeField] private Projectile projectilePrefab;
+        [SerializeField] private float fireDelay = 0.12f; 
+
         private Camera _camera; 
         private Transform _transform;
 
         private Vector2 _mousePosition;
 
+        private float _nextFireTime; 
+
         private void Awake() 
         {
             _camera = Camera.main;
             _transform = transform;
+
+            _nextFireTime = Time.time + fireDelay;
         }
 
         private void Update()
@@ -22,6 +31,13 @@ namespace CannonGame
             _mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
 
             RotateTurret();
+
+            if (Input.GetMouseButton(0) && _nextFireTime < Time.time)
+            {
+                Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+
+                _nextFireTime = Time.time + fireDelay;
+            }
         }
 
         private void RotateTurret()
