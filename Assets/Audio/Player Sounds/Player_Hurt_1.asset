@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60c95f1a490d7e443a1b001a2ce08741, type: 3}
-  m_Name: PlayerShoot
+  m_Script: {fileID: 11500000, guid: 25678f839b0a46245b6ee25b8507ce4f, type: 3}
+  m_Name: Player_Hurt_1
   m_EditorClassIdentifier: 
-  description: Sound played when player shoots
+  clip: {fileID: 8300000, guid: 0eeb45c136bb4ed4084e019b0167b183, type: 3}
+  volume: 1
