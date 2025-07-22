@@ -1,5 +1,6 @@
-using CannonGame.EventSystem;
 using UnityEngine;
+using CannonGame.EventSystem;
+using Random = UnityEngine.Random; 
 
 namespace CannonGame.Audio
 {
@@ -7,7 +8,38 @@ namespace CannonGame.Audio
                      menuName = "CannonGame/Audio/Audio Data")]
     public class AudioDataSO : ScriptableObject
     {
-        public AudioClip clip;
+        // Exposed data. 
+        public AudioClip[] clips;
         [Range(0f, 1f)] public float volume = 1f;
+
+        // Instance dependent properties and methods. 
+        public bool IsValid { get; private set; } = true; 
+
+        // Verify that all of the clips in the clips array are valid. 
+        private void OnEnable()
+        {
+            IsValid = VerifyClips(this);
+
+            if (!IsValid)
+                Debug.LogWarning($"<color=red>AudioDataSO</color> ('{name}'): clips array contains an empty index.");
+        }
+
+        public AudioClip GetClip() => GetRandomClip(this);
+
+        private static bool VerifyClips(AudioDataSO audioData)
+        {
+            foreach (var clip in audioData.clips)
+            {
+                if (clip) continue;
+                return false;
+            }
+
+            return true;
+        }
+
+        private static AudioClip GetRandomClip(AudioDataSO audioData)
+        {
+            return audioData.clips[Random.Range(0, audioData.clips.Length)];
+        }
     }
 }
