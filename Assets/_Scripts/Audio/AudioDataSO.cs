@@ -24,8 +24,16 @@ namespace CannonGame.Audio
                 Debug.LogWarning($"<color=red>AudioDataSO</color> ('{name}'): clips array contains an empty index.");
         }
 
+        /// <summary>
+        /// Gets an audio clip from the available clips. 
+        /// </summary>
         public AudioClip GetClip() => GetRandomClip(this);
 
+        /// <summary>
+        /// Verifies that all indexes of an AudioDataSO's clips has a valid AudioClip set.
+        /// </summary>
+        /// <param name="audioData">AudioDataSO object.</param>
+        /// <returns>Validity of clips.</returns>
         private static bool VerifyClips(AudioDataSO audioData)
         {
             foreach (var clip in audioData.clips)
@@ -37,6 +45,11 @@ namespace CannonGame.Audio
             return true;
         }
 
+        /// <summary>
+        /// Gets a random audio clip from the given AudioDataSO object. 
+        /// </summary>
+        /// <param name="audioData">AudioDataSO object.</param>
+        /// <returns>Random audio clip.</returns>
         private static AudioClip GetRandomClip(AudioDataSO audioData)
         {
             return audioData.clips[Random.Range(0, audioData.clips.Length)];
