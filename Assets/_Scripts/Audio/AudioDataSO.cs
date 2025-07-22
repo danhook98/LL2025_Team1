@@ -1,5 +1,4 @@
 using UnityEngine;
-using CannonGame.EventSystem;
 using Random = UnityEngine.Random; 
 
 namespace CannonGame.Audio
@@ -10,7 +9,13 @@ namespace CannonGame.Audio
     {
         // Exposed data. 
         public AudioClip[] clips;
+        [Space]
         [Range(0f, 1f)] public float volume = 1f;
+
+        [Header("Pitch")]
+        public bool useRandomPitch = false;
+        [Range(0.1f, 2f)] public float minimumPitch = 1f;
+        [Range(0.1f, 2f)] public float maximumPitch = 1f;
 
         // Instance dependent properties and methods. 
         public bool IsValid { get; private set; } = true; 
