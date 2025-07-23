@@ -51,6 +51,8 @@ MonoBehaviour:
   firePoint: {fileID: 5539889004818712969}
   projectilePrefab: {fileID: 2938688817486375890, guid: 9fa5391899d104447814dbe776576cc5, type: 3}
   fireDelay: 0.12
+  playSFXEvent: {fileID: 11400000, guid: 09ba0dd42cc20d147bc9cf59a1a40f22, type: 2}
+  shootSound: {fileID: 11400000, guid: c4271dbd33c15bf4ca2a0075afaa2c5c, type: 2}
 --- !u!1 &7449021303089590538
 GameObject:
   m_ObjectHideFlags: 0
