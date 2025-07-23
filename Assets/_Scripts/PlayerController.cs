@@ -1,4 +1,3 @@
-using CannonGame.EventSystem;
 using UnityEngine;
 using CannonGame.EventSystem;
 using CannonGame.Audio; 
@@ -13,13 +12,15 @@ namespace CannonGame
         [SerializeField] private Transform firePoint;
         [SerializeField] private Projectile projectilePrefab;
         [SerializeField] private float fireDelay = 0.12f;
-        [SerializeField] Transform gunSprite;
-        [SerializeField] float aimOffset;
-        [SerializeField] Animator gunAnim;
+        [SerializeField] private Transform gunSprite;
+        [SerializeField] private Animator gunAnim;
 
         [Header("Audio")]
         [SerializeField] private AudioDataSOEvent playSFXEvent;
-        [SerializeField] private AudioDataSO shootSound; 
+        [SerializeField] private AudioDataSO shootSound;
+
+        [Header("Events")]
+        [SerializeField] private VoidEvent onPlayerShoot;
 
         private Camera _camera; 
         private Transform _transform;
@@ -28,7 +29,7 @@ namespace CannonGame
 
         private float _nextFireTime;
 
-        [SerializeField] VoidEvent PlayerShot;
+        private static readonly int _shootAnim = Animator.StringToHash("Shoot");
 
         private void Awake() 
         {
@@ -49,10 +50,11 @@ namespace CannonGame
                 Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 
                 _nextFireTime = Time.time + fireDelay;
-                PlayerShot.Invoke();
+
+                onPlayerShoot.Invoke();
 
                 playSFXEvent.Invoke(shootSound);
-                gunAnim.SetTrigger("Shoot");
+                gunAnim.SetTrigger(_shootAnim);
             }
         }
 
@@ -67,7 +69,7 @@ namespace CannonGame
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             // Convert the target angle into a Quaternion for use in the lerp method.
-            Quaternion targetAngle = Quaternion.Euler(0f, 0f, angle + aimOffset);
+            Quaternion targetAngle = Quaternion.Euler(0f, 0f, angle - 90);
 
             // Linearly interpolate to the target angle. I discovered the below formula for the lerp's 't' variable
             // when researching for frame-rate independent lerping on Rory Driscoll's 'Codeitnow' blog. 
