@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25678f839b0a46245b6ee25b8507ce4f, type: 3}
-  m_Name: Player_Lose
+  m_Script: {fileID: 11500000, guid: 47e349bcdd1b5c945b7d8db9ead511e6, type: 3}
+  m_Name: OnPlayerShoot
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 1c5b21eaee817e943aeca228ef609649, type: 3}
-  volume: 1
+  description: 

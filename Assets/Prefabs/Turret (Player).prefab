@@ -53,6 +53,7 @@ MonoBehaviour:
   fireDelay: 0.12
   playSFXEvent: {fileID: 11400000, guid: 09ba0dd42cc20d147bc9cf59a1a40f22, type: 2}
   shootSound: {fileID: 11400000, guid: c4271dbd33c15bf4ca2a0075afaa2c5c, type: 2}
+  onPlayerShoot: {fileID: 11400000, guid: 8080247a5ea94bf4e801e012dc098c8f, type: 2}
 --- !u!1 &7449021303089590538
 GameObject:
   m_ObjectHideFlags: 0
