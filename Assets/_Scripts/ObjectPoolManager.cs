@@ -11,7 +11,7 @@ namespace CannonGame
         private static Dictionary<GameObject, ObjectPool<GameObject>> _pools = new();
         private static Dictionary<GameObject, GameObject> _objPrefabMap = new();
 
-        private static void CreatePool(GameObject prefab, Vector3 position, Quaternion rotation)
+        public static void CreatePool(GameObject prefab, int defaultCapacity = 10)
         {
             if (!_poolsContainer)
             {
@@ -19,21 +19,21 @@ namespace CannonGame
             }
 
             ObjectPool<GameObject> pool = new(
-                createFunc: () => CreateObject(prefab, position, rotation),
+                createFunc: () => CreateObject(prefab),
                 actionOnGet: OnGetObject,
                 actionOnRelease: OnReleaseObject,
-                actionOnDestroy: OnDestroyObject);
+                actionOnDestroy: OnDestroyObject
+                );
 
             _pools.Add(prefab, pool);
         }
 
-        private static GameObject CreateObject(GameObject prefab, Vector3 position, Quaternion rotation)
+        private static GameObject CreateObject(GameObject prefab)
         {
             prefab.SetActive(false);
 
-            GameObject obj = Instantiate(prefab, position, rotation);
+            GameObject obj = Instantiate(prefab);
 
-            obj.transform.SetPositionAndRotation(position, rotation);
             obj.transform.SetParent(_poolsContainer.transform, false);
 
             prefab.SetActive(true);
@@ -57,30 +57,29 @@ namespace CannonGame
 
         private static void OnDestroyObject(GameObject obj)
         {
-
+            Destroy(obj);
         }
 
         public static T SpawnObject<T>(GameObject obj, Vector3 position, Quaternion rotation) where T : Object
         {
             if (!_pools.ContainsKey(obj))
-                CreatePool(obj, position, rotation);
+                CreatePool(obj);
 
             GameObject spawnedObject = _pools[obj].Get();
 
-            if (spawnedObject)
+            if (!spawnedObject) return null; 
+            
+            if (!_objPrefabMap.ContainsKey(spawnedObject))
             {
-                if (!_objPrefabMap.ContainsKey(spawnedObject))
-                {
-                    _objPrefabMap.Add(spawnedObject, obj);
-                }
+                _objPrefabMap.Add(spawnedObject, obj);
+            }
 
-                spawnedObject.transform.SetPositionAndRotation(position, rotation);
-                spawnedObject.SetActive(true);
+            spawnedObject.transform.SetPositionAndRotation(position, rotation);
+            spawnedObject.SetActive(true);
 
-                if (typeof(T) == typeof(GameObject))
-                {
-                    return spawnedObject as T;
-                }
+            if (typeof(T) == typeof(GameObject))
+            {
+                return spawnedObject as T;
             }
 
             return null; 
