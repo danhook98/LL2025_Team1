@@ -14,26 +14,34 @@ namespace CannonGame
         {
             if (!_poolsContainer)
             {
-                _poolsContainer= new GameObject("Object Pools");
+                _poolsContainer = new GameObject("Object Pools");
             }
+
+            ObjectPool<GameObject> pool = new(
+                createFunc: () => CreateObject(prefab, position, rotation),
+                actionOnGet: OnGetObject,
+                actionOnRelease: OnReleaseObject,
+                actionOnDestroy: OnDestroyObject);
+
+            _pools.Add(prefab, pool);
         }
 
-        private static void CreateObject()
+        private static GameObject CreateObject(GameObject obj, Vector3 position, Quaternion rotation)
+        {
+            return new GameObject();
+        }
+
+        private static void OnGetObject(GameObject obj)
         {
 
         }
 
-        private static void OnGetObject()
+        private static void OnReleaseObject(GameObject obj)
         {
 
         }
 
-        private static void OnReleaseObject()
-        {
-
-        }
-
-        private static void OnDestroyObject()
+        private static void OnDestroyObject(GameObject obj)
         {
 
         }
