@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace CannonGame
@@ -14,9 +15,16 @@ namespace CannonGame
             _rigidbody2d = GetComponent<Rigidbody2D>();
         }
 
-        private void Start()
+        private void OnEnable()
         {
             _rigidbody2d.AddForce(transform.up * launchSpeed, ForceMode2D.Impulse);
+            StartCoroutine(Disable());
+        }
+
+        private IEnumerator Disable()
+        {
+            yield return new WaitForSeconds(3f);
+            ObjectPoolManager.ReturnToPool(gameObject);
         }
     }
 }

@@ -35,7 +35,7 @@ namespace CannonGame
             _nextFireTime = Time.time + fireDelay;
 
             // For testing only. 
-            ObjectPoolManager.CreatePool(projectilePrefab.gameObject, Vector3.zero, Quaternion.identity);
+            //ObjectPoolManager.CreatePool(projectilePrefab.gameObject, Vector3.zero, Quaternion.identity);
         }
 
         private void Update()
@@ -46,7 +46,9 @@ namespace CannonGame
 
             if (Input.GetMouseButton(0) && _nextFireTime < Time.time)
             {
-                Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+                //Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+
+                GameObject test = ObjectPoolManager.SpawnObject<GameObject>(projectilePrefab.gameObject, firePoint.position, firePoint.rotation);
 
                 _nextFireTime = Time.time + fireDelay;
 
