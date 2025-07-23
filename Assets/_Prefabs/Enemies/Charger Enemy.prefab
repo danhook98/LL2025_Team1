@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4668279572063012636}
   - component: {fileID: 1005443806567539505}
   - component: {fileID: 4104257383370670630}
+  - component: {fileID: 3172071732901136191}
   m_Layer: 0
   m_Name: Charger Enemy
   m_TagString: Enemy
@@ -195,13 +196,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184a5f65cd1a4874db58def9cc800a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 5
   OnDamaged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3172071732901136191}
+        m_TargetAssemblyTypeName: CannonGame.SoundMakerModule, Assembly-CSharp
+        m_MethodName: MakeSound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 4b83145eea8a35547a845266114a6239, type: 2}
+          m_ObjectArgumentAssemblyTypeName: CannonGame.Audio.AudioDataSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealed:
     m_PersistentCalls:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3172071732901136191}
+        m_TargetAssemblyTypeName: CannonGame.SoundMakerModule, Assembly-CSharp
+        m_MethodName: MakeSound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 1843fa1928fea4a4b895424fc05120f3, type: 2}
+          m_ObjectArgumentAssemblyTypeName: CannonGame.Audio.AudioDataSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3172071732901136191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362681577714429961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2f1bf5c2073b4448da148fa9579c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioEvent: {fileID: 11400000, guid: 09ba0dd42cc20d147bc9cf59a1a40f22, type: 2}
