@@ -12,6 +12,8 @@ namespace CannonGame
         [SerializeField] private Transform firePoint;
         [SerializeField] private Projectile projectilePrefab;
         [SerializeField] private float fireDelay = 0.12f;
+        [SerializeField] private Transform gunSprite;
+        [SerializeField] private Animator gunAnim;
 
         [Header("Audio")]
         [SerializeField] private AudioDataSOEvent playSFXEvent;
@@ -27,10 +29,12 @@ namespace CannonGame
 
         private float _nextFireTime;
 
+        private static readonly int _shootAnim = Animator.StringToHash("Shoot");
+
         private void Awake() 
         {
             _camera = Camera.main;
-            _transform = transform;
+            _transform = gunSprite;
 
             _nextFireTime = Time.time + fireDelay;
         }
@@ -49,7 +53,8 @@ namespace CannonGame
 
                 onPlayerShoot.Invoke();
 
-                playSFXEvent.Invoke(shootSound);    
+                playSFXEvent.Invoke(shootSound);
+                gunAnim.SetTrigger(_shootAnim);
             }
         }
 
@@ -64,11 +69,11 @@ namespace CannonGame
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             // Convert the target angle into a Quaternion for use in the lerp method.
-            Quaternion targetAngle = Quaternion.Euler(0f, 0f, angle);
+            Quaternion targetAngle = Quaternion.Euler(0f, 0f, angle - 90);
 
             // Linearly interpolate to the target angle. I discovered the below formula for the lerp's 't' variable
             // when researching for frame-rate independent lerping on Rory Driscoll's 'Codeitnow' blog. 
-            Quaternion smoothedRotation = Quaternion.Lerp( transform.rotation, targetAngle, 
+            Quaternion smoothedRotation = Quaternion.Lerp(_transform.rotation, targetAngle, 
                 1f - Mathf.Exp( -rotationSpeed * Time.deltaTime ) );
 
             _transform.rotation = smoothedRotation;
