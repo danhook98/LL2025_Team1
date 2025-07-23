@@ -1,3 +1,4 @@
+using CannonGame.EventSystem;
 using UnityEngine;
 using CannonGame.EventSystem;
 using CannonGame.Audio; 
@@ -22,7 +23,9 @@ namespace CannonGame
 
         private Vector2 _mousePosition;
 
-        private float _nextFireTime; 
+        private float _nextFireTime;
+
+        [SerializeField] VoidEvent PlayerShot;
 
         private void Awake() 
         {
@@ -43,6 +46,7 @@ namespace CannonGame
                 Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 
                 _nextFireTime = Time.time + fireDelay;
+                PlayerShot.Invoke();
 
                 playSFXEvent.Invoke(shootSound);    
             }
