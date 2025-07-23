@@ -1,4 +1,5 @@
 using DG.Tweening;
+using JetBrains.Annotations;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -24,6 +25,7 @@ namespace CannonGame
         public float Totalhighscore;
 
         //shop checks
+        public bool Shopbusy = false;
         public bool Shopopen = false;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -86,38 +88,63 @@ namespace CannonGame
         ///Attempting to make a base for the shop using the same script below
         public void Openshop()
         {
-            //if (!Shopopen)
+            if ((!Shopbusy) && !Shopopen)
             {
                 Debug.Log("welcome to shop");
                 //first number is distance you want moved (not the actual position) second is how long it takes to move that much (1 is a second 60 is a minute)
                 //DOMoveX uses global then local, use DOLocalMoveX if you want specific movement
                 Shop.transform.DOLocalMoveX(-200f, 1f);
-                //StartCoroutine(ShopTransition());
+                StartCoroutine(ShopTransition());
             }
 
         }
         public void Closeshop()
         {
-            //if (Shopopen)
+            if ((!Shopbusy) && Shopopen)
             {
                 Debug.Log("Bye bye");
                 Shop.transform.DOLocalMoveX(-400f, 0.5f);
-                //StartCoroutine(ShopTransition());
+                StartCoroutine(ShopTransition());
             }
         }
 
-        //IEnumerator ShopTransition()
-        //{
-            //if (Shopopen)
-            //{
-            //    yield return new WaitForSeconds(0.5f);
-            //    if (Shopopen) Shopopen = false;
-            //}
-            //else (!Shopopen)
-            //{
-            //    yield return new WaitForSeconds(1f);
-            //    if (!Shopopen) Shopopen = true;
-            //}
-        //}
+        IEnumerator ShopTransition()
+        {
+            Shopbusy = true;
+            yield return new WaitForSeconds(0.2f);
+            Shopbusy = false;
+            if (Shopopen)
+            {
+                yield return new WaitForSeconds(0.5f);
+                if (Shopopen) Shopopen = false;
+            }
+            else if (!Shopopen)
+            {
+                yield return new WaitForSeconds(1f);
+                if (!Shopopen) Shopopen = true;
+            }
+        }
+
+        public void BuyItem1()
+        {
+            if (Totalscore >= 5f)
+            {
+                Totalscore -= 5f;
+            }
+        }
+        public void BuyItem2()
+        {
+            if (Totalscore >= 10f)
+            {
+                Totalscore -= 10f;
+            }
+        }
+        public void BuyItem3()
+        {
+            if (Totalscore >= 15f)
+            {
+                Totalscore -= 15f;
+            }
+        }
     }
 }
