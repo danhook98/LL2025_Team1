@@ -4,7 +4,7 @@ using UnityEngine.Pool;
 
 namespace CannonGame
 {
-    public static class ObjectPoolManager
+    public class ObjectPoolManager : MonoBehaviour
     {
         private static GameObject _poolsContainer; 
 
