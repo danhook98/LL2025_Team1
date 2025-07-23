@@ -1,5 +1,7 @@
 using CannonGame.EventSystem;
 using UnityEngine;
+using CannonGame.EventSystem;
+using CannonGame.Audio; 
 
 namespace CannonGame
 {
@@ -10,7 +12,11 @@ namespace CannonGame
         [Header("Shooting")]
         [SerializeField] private Transform firePoint;
         [SerializeField] private Projectile projectilePrefab;
-        [SerializeField] private float fireDelay = 0.12f; 
+        [SerializeField] private float fireDelay = 0.12f;
+
+        [Header("Audio")]
+        [SerializeField] private AudioDataSOEvent playSFXEvent;
+        [SerializeField] private AudioDataSO shootSound; 
 
         private Camera _camera; 
         private Transform _transform;
@@ -41,6 +47,8 @@ namespace CannonGame
 
                 _nextFireTime = Time.time + fireDelay;
                 PlayerShot.Invoke();
+
+                playSFXEvent.Invoke(shootSound);    
             }
         }
 

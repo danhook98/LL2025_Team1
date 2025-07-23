@@ -47,14 +47,16 @@ namespace CannonGame.Audio
         /// <param name="audioData">AudioDataSO data asset.</param>
         public void PlaySFX(AudioDataSO audioData)
         {
-            if (!audioData.clip)
+            if (!audioData.IsValid)
             {
                 Debug.LogWarning($"<color=red>Audio Manager</color>: Attempted to play audio one shot for " +
                                  $"{audioData.name}, but clip data is null.");
                 return;
             }
 
-            audioSourceSFX.PlayOneShot(audioData.clip, audioData.volume);
+            var clip = audioData.GetClip();
+
+            audioSourceSFX.PlayOneShot(clip, audioData.volume);
         }
 
         /// <summary>
@@ -63,14 +65,14 @@ namespace CannonGame.Audio
         /// <param name="audioData">AudioDataSO data asset.</param>
         public void PlayMusic(AudioDataSO audioData)
         {
-            if (!audioData.clip)
+            if (!audioData.IsValid)
             {
                 Debug.LogWarning($"<color=red>Audio Manager</color>: Attempted to play audio music for " +
                                  $"{audioData.name}, but clip data is null.");
                 return;
             }
 
-            audioSourceMusic.clip = audioData.clip;
+            audioSourceMusic.clip = audioData.GetClip();
             audioSourceMusic.volume = audioData.volume;
             audioSourceMusic.Play();
         }
