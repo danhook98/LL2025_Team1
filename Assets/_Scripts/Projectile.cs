@@ -24,6 +24,7 @@ namespace CannonGame
         private IEnumerator Disable()
         {
             yield return new WaitForSeconds(3f);
+            _rigidbody2d.linearVelocity = Vector3.zero;
             ObjectPoolManager.ReturnToPool(gameObject);
         }
     }
