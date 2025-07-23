@@ -10,7 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25678f839b0a46245b6ee25b8507ce4f, type: 3}
-  m_Name: Player_Shoot
+  m_Name: Player_Hurt_1
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 28b519ee6f5692e4bb4a2d1e69feb057, type: 3}
+  clips:
+  - {fileID: 8300000, guid: 0eeb45c136bb4ed4084e019b0167b183, type: 3}
   volume: 1
+  useRandomPitch: 0
+  minimumPitch: 1
+  maximumPitch: 1
