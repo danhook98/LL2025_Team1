@@ -33,6 +33,9 @@ namespace CannonGame
             _transform = transform;
 
             _nextFireTime = Time.time + fireDelay;
+
+            // For testing only. 
+            ObjectPoolManager.CreatePool(projectilePrefab.gameObject, Vector3.zero, Quaternion.identity);
         }
 
         private void Update()
