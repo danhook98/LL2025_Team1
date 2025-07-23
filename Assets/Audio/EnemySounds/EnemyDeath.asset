@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25678f839b0a46245b6ee25b8507ce4f, type: 3}
   m_Name: EnemyDeath
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 2d86a290c5b1af2438de5fc5c3c50ca5, type: 3}
+  clips:
+  - {fileID: 8300000, guid: 2d86a290c5b1af2438de5fc5c3c50ca5, type: 3}
   volume: 1
+  useRandomPitch: 0
+  minimumPitch: 1
+  maximumPitch: 1
