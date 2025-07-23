@@ -26,19 +26,26 @@ namespace CannonGame
             _pools.Add(prefab, pool);
         }
 
-        private static GameObject CreateObject(GameObject obj, Vector3 position, Quaternion rotation)
+        public static GameObject CreateObject(GameObject prefab, Vector3 position, Quaternion rotation)
         {
-            return new GameObject();
+            GameObject obj = Instantiate(prefab, position, rotation);
+
+            obj.transform.SetPositionAndRotation(position, rotation);
+            obj.transform.SetParent(_poolsContainer.transform, false);
+
+            return obj;
         }
 
         private static void OnGetObject(GameObject obj)
         {
-
+            // Enable the object.
+            obj.SetActive(true);
         }
 
         private static void OnReleaseObject(GameObject obj)
         {
-
+            // Disable the object. 
+            obj.SetActive(false);
         }
 
         private static void OnDestroyObject(GameObject obj)
