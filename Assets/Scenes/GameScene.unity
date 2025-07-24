@@ -876,9 +876,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2278,7 +2278,6 @@ Transform:
   m_Children:
   - {fileID: 2120466523}
   - {fileID: 229868613}
-  - {fileID: 1726241294}
   - {fileID: 2015656660}
   - {fileID: 847980268}
   - {fileID: 118696364}
@@ -2288,6 +2287,7 @@ Transform:
   - {fileID: 2066934604}
   - {fileID: 1432860623}
   - {fileID: 162320187}
+  - {fileID: 1726241294}
   m_Father: {fileID: 729289106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1269437934
@@ -3254,8 +3254,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.209991, y: 60}
-  m_SizeDelta: {x: 190.8678, y: 500}
+  m_AnchoredPosition: {x: 110.63995, y: 60.000046}
+  m_SizeDelta: {x: 54.3807, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1726241295
 MonoBehaviour:
@@ -3270,22 +3270,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 729289102}
-          m_TargetAssemblyTypeName: CannonGame.UIScoreTest, Assembly-CSharp
-          m_MethodName: Openshop
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -4178,7 +4162,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120466522}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 

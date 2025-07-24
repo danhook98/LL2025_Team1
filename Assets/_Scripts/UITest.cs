@@ -33,6 +33,7 @@ namespace CannonGame
         [SerializeField] int[] turretPrices;
         [SerializeField] TextMeshProUGUI[] priceTexts;
         [SerializeField] IntEvent spawnTurretEvent;
+        [SerializeField] Tween currentTween;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -52,6 +53,16 @@ namespace CannonGame
             Score.text = Totalscore.ToString();
 
             Highscore.text = Totalhighscore.ToString();
+
+            if (Shopopen && Shop.transform.localPosition.x != -200)
+            {
+				if (currentTween != null && currentTween.IsPlaying()) return;
+				currentTween = Shop.transform.DOLocalMoveX(-200f, 1f);
+			} else if (!Shopopen && Shop.transform.localPosition.x != -400)
+            {
+                if(currentTween != null && currentTween.IsPlaying()) return;
+				currentTween = Shop.transform.DOLocalMoveX(-400f, 0.5f);
+			}
 
             ///sets players highscore as current score if its higher then the current highscore
             if (Totalscore > Totalhighscore) PlayerPrefs.SetInt("highscore", Totalscore);
@@ -98,42 +109,46 @@ namespace CannonGame
         ///Attempting to make a base for the shop using the same script below
         public void Openshop()
         {
-            if ((!Shopbusy) && !Shopopen)
+            if (!Shopopen)
             {
+                Shopopen = true;
                 Debug.Log("welcome to shop");
+                currentTween.Kill();
+                currentTween = null;
                 //first number is distance you want moved (not the actual position) second is how long it takes to move that much (1 is a second 60 is a minute)
                 //DOMoveX uses global then local, use DOLocalMoveX if you want specific movement
-                Shop.transform.DOLocalMoveX(-200f, 1f);
-                StartCoroutine(ShopTransition());
+                //StartCoroutine(ShopTransition());
             }
 
         }
         public void Closeshop()
         {
-            if ((!Shopbusy) && Shopopen)
-            {
-                Debug.Log("Bye bye");
-                Shop.transform.DOLocalMoveX(-400f, 0.5f);
-                StartCoroutine(ShopTransition());
-            }
-        }
-
-        IEnumerator ShopTransition()
-        {
-            Shopbusy = true;
-            yield return new WaitForSeconds(0.2f);
-            Shopbusy = false;
             if (Shopopen)
             {
-                yield return new WaitForSeconds(0.5f);
-                if (Shopopen) Shopopen = false;
-            }
-            else if (!Shopopen)
-            {
-                yield return new WaitForSeconds(1f);
-                if (!Shopopen) Shopopen = true;
-            }
+                Shopopen = false;
+                Debug.Log("Bye bye");
+				currentTween.Kill();
+				currentTween = null;
+				//StartCoroutine(ShopTransition());
+			}
         }
+
+        //IEnumerator ShopTransition()
+        //{
+        //    Shopbusy = true;
+        //    yield return new WaitForSeconds(0.2f);
+        //    Shopbusy = false;
+        //    if (Shopopen)
+        //    {
+        //        yield return new WaitForSeconds(0.5f);
+        //        if (Shopopen) Shopopen = false;
+        //    }
+        //    else if (!Shopopen)
+        //    {
+        //        yield return new WaitForSeconds(1f);
+        //        if (!Shopopen) Shopopen = true;
+        //    }
+        //}
 
         public void BuyItem1()
         {
