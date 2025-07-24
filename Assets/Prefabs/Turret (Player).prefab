@@ -199,11 +199,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnableTurrets:
   - {fileID: 7585975857331014886, guid: 62d53f77f83a94a4594587e048b03246, type: 3}
+  - {fileID: 7585975857331014886, guid: 5eaa226f48954f44a8a56497c5278dce, type: 3}
+  - {fileID: 7585975857331014886, guid: bb407ca59c38db74ebc9dddc3c68be6a, type: 3}
   turretHolder: {fileID: 8175529711736900401}
   debugSpawnTurret: {fileID: 11400000, guid: beac3e46c7c9b994782dfd27b23804f1, type: 2}
   spawnDistance: 2
   maxTurretsPerRing: 16
   ringSeperation: 1
+  orbitSpeed: 5
 --- !u!114 &9205622695380465070
 MonoBehaviour:
   m_ObjectHideFlags: 0

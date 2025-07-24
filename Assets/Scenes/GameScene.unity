@@ -501,6 +501,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaveSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 5546909010578964749, guid: 933c668361a1edf479d833e42eae27da, type: 3}
+      propertyPath: baseSpawnRate
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546909010578964749, guid: 933c668361a1edf479d833e42eae27da, type: 3}
+      propertyPath: timeBetweenWaves
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546909010578964749, guid: 933c668361a1edf479d833e42eae27da, type: 3}
+      propertyPath: enemiesToSpawn.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546909010578964749, guid: 933c668361a1edf479d833e42eae27da, type: 3}
+      propertyPath: 'enemiesToSpawn.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9797c3696216b2d469f86d5477fb98cc, type: 2}
+    - target: {fileID: 5546909010578964749, guid: 933c668361a1edf479d833e42eae27da, type: 3}
+      propertyPath: 'enemiesToSpawn.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 20a484ca7b672c747bae9def74f70f3b, type: 2}
     - target: {fileID: 6481193368876282938, guid: 933c668361a1edf479d833e42eae27da, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
