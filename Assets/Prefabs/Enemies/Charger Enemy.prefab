@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3172071732901136191}
   - component: {fileID: 810946309830571570}
   - component: {fileID: 5849236315956749994}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Charger Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}

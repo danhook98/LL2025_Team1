@@ -56,10 +56,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2938688817486375890, guid: 9fa5391899d104447814dbe776576cc5, type: 3}
   fireDelay: 0.12
   gunSprite: {fileID: 4494839096769718241}
-  aimOffset: -90
   gunAnim: {fileID: 3141008505918435987}
   playSFXEvent: {fileID: 11400000, guid: 09ba0dd42cc20d147bc9cf59a1a40f22, type: 2}
-  shootSound: {fileID: 11400000, guid: c4271dbd33c15bf4ca2a0075afaa2c5c, type: 2}
+  shootSound: {fileID: 11400000, guid: 36922d0897856a34d80d35610ef19ce6, type: 2}
   onPlayerShoot: {fileID: 11400000, guid: 8080247a5ea94bf4e801e012dc098c8f, type: 2}
 --- !u!58 &4173427798890470948
 CircleCollider2D:
