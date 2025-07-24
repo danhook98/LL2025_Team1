@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25678f839b0a46245b6ee25b8507ce4f, type: 3}
-  m_Name: EnemyHurt
+  m_Script: {fileID: 11500000, guid: ebef925d4209d7f4fa512d71d2af5c93, type: 3}
+  m_Name: ShooterEnemy
   m_EditorClassIdentifier: 
-  clips:
-  - {fileID: 8300000, guid: 7934fac0c7225f44c8ad52ad39a00958, type: 3}
-  volume: 0.5
-  useRandomPitch: 0
-  minimumPitch: 1
-  maximumPitch: 1
+  enemyToSpawn: {fileID: 4362681577714429961, guid: 6a895f686627e1d499407a0ff7b9a298, type: 3}
+  spawnStartWave: 5

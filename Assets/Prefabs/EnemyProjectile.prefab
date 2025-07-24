@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4621169364711898208}
   - component: {fileID: 5363187733147354500}
   m_Layer: 0
-  m_Name: HeavyBullet
+  m_Name: EnemyProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5998859317765812747, guid: c754dc3ac6fdae3478ebed6bf76da7ff, type: 3}
+  m_Sprite: {fileID: 1362893778864722596, guid: 8e2fc75f2d344eb418e6011a377ee202, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ba3899d510e624e84c5a6358151207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchSpeed: 5
+  launchSpeed: 10
 --- !u!50 &2035681606278902453
 Rigidbody2D:
   serializedVersion: 5
@@ -166,17 +166,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0040997267, y: 0.0070200562}
+  m_Offset: {x: 0.0023709536, y: 0.0070200562}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5625, y: 0.5625}
+    oldSize: {x: 0.375, y: 0.5625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5708964, y: 0.58347785}
+  m_Size: {x: 0.25469947, y: 0.58347785}
   m_EdgeRadius: 0
 --- !u!114 &5363187733147354500
 MonoBehaviour:
@@ -190,8 +190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c27b7c1826a0154491b1b30a52263ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  exclusionTag: Enemy
+  damage: 0.6
+  exclusionTag: Player
 --- !u!1 &3054125679092218901
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,8 +300,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9960785, g: 0, b: 0.3019608, a: 1}
-      key1: {r: 0.9960785, g: 0, b: 0.3019608, a: 0.13725491}
+      key0: {r: 0, g: 0.14509805, b: 0.9960785, a: 1}
+      key1: {r: 0, g: 0.14509805, b: 0.9960785, a: 0.13725491}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
