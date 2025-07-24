@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2871200335111990456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4377424585415103408}
+  m_Layer: 6
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4377424585415103408
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2871200335111990456}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.729, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4262654284264621199}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4362681577714429961
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,14 +42,14 @@ GameObject:
   - component: {fileID: 4262654284264621199}
   - component: {fileID: 5427092190896445836}
   - component: {fileID: 4668279572063012636}
-  - component: {fileID: 1005443806567539505}
   - component: {fileID: 4104257383370670630}
   - component: {fileID: 3172071732901136191}
   - component: {fileID: 810946309830571570}
   - component: {fileID: 5849236315956749994}
-  - component: {fileID: 8572767520355218547}
+  - component: {fileID: 2535338974604313417}
+  - component: {fileID: 3421432636975257615}
   m_Layer: 6
-  m_Name: Charger Enemy
+  m_Name: ShooterEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +67,8 @@ Transform:
   m_LocalPosition: {x: 2.781, y: -0.027446, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4377424585415103408}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5427092190896445836
@@ -83,7 +115,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1123307142537081798, guid: dba437eba7896784c9452af95e423200, type: 3}
+  m_Sprite: {fileID: 7742112350714981709, guid: d7c3283489a8d344fa1d2170fa3e7cd2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,9 +138,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Graph: {fileID: -8413195771762949229, guid: 17695e94a031da94daabddf9c0acae5f, type: 2}
+  m_Graph: {fileID: -8413195771762949229, guid: 65f02b06b964d994f8cdf24ee5d58c51, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 3495324727629578517
+  - rid: 3495324929706950717
+  - rid: 3495324929706950718
+  - rid: 3495324929706950719
+  - rid: 3495324929706950722
+  - rid: 3495324929706951064
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -122,20 +159,46 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 4362681577714429961}
---- !u!114 &1005443806567539505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4362681577714429961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c27b7c1826a0154491b1b30a52263ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  exclusionTag: Player
+    - rid: 3495324929706950717
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 13670836001216189466
+          m_Value1: 18043137701882499516
+        Name: ShootPoint
+        m_Value: {fileID: 4377424585415103408}
+    - rid: 3495324929706950718
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2853982962408046686
+          m_Value1: 6326967501423447123
+        Name: Projectile
+        m_Value: {fileID: 2354662661628901003, guid: 523aaa2a27dbccc4898eda2c8e8acca3, type: 3}
+    - rid: 3495324929706950719
+      type: {class: 'BlackboardVariable`1[[CannonGame.ShooterModule, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 5817295759425059590
+          m_Value1: 7158758498429131138
+        Name: Module
+        m_Value: {fileID: 2535338974604313417}
+    - rid: 3495324929706950722
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 4444502241019633302
+          m_Value1: 10762333090869851950
+        Name: StopDistance
+        m_Value: 4
+    - rid: 3495324929706951064
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 16157007360555182148
+          m_Value1: 18123133172452891304
+        Name: ShootRate
+        m_Value: 0.3
 --- !u!114 &4104257383370670630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +245,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8572767520355218547}
+      - m_Target: {fileID: 3421432636975257615}
         m_TargetAssemblyTypeName: CannonGame.ScoreIncreaserModule, Assembly-CSharp
         m_MethodName: Increase
         m_Mode: 3
@@ -241,7 +304,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0032111406, y: -0.008291423}
+  m_Offset: {x: -0.00011610985, y: -0.008291423}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -251,7 +314,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.009938, y: 1.0768389}
+  m_Size: {x: 0.774724, y: 1.0768389}
   m_EdgeRadius: 0
 --- !u!95 &5849236315956749994
 Animator:
@@ -263,7 +326,7 @@ Animator:
   m_GameObject: {fileID: 4362681577714429961}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d59fa71582f7b59448e9277dbcf447bf, type: 2}
+  m_Controller: {fileID: 9100000, guid: f4169c2cf04ad40489982ca5574f187e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -275,7 +338,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8572767520355218547
+--- !u!114 &2535338974604313417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362681577714429961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c01e8d18fddf6489ef08d1e49f7c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 5849236315956749994}
+--- !u!114 &3421432636975257615
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
