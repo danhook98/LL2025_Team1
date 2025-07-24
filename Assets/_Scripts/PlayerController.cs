@@ -40,7 +40,7 @@ namespace CannonGame
 
             // For testing only. 
             //ObjectPoolManager.CreatePool(projectilePrefab.gameObject, Vector3.zero, Quaternion.identity);
-            ObjectPoolManager.CreatePool(projectilePrefab.gameObject, 10, 10);
+            //ObjectPoolManager.CreatePool(projectilePrefab.gameObject, 10, 10);
         }
 
         private void Update()
@@ -53,7 +53,7 @@ namespace CannonGame
             {
                 //Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 
-                GameObject test = ObjectPoolManager.SpawnObject<GameObject>(projectilePrefab.gameObject, firePoint.position, firePoint.rotation);
+                Projectile projectile = ObjectPoolManager.SpawnObject(projectilePrefab, firePoint.position, firePoint.rotation);
 
                 _nextFireTime = Time.time + fireDelay;
 

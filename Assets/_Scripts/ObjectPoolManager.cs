@@ -11,11 +11,11 @@ namespace CannonGame
         private static Dictionary<GameObject, ObjectPool<GameObject>> _pools = new();
         private static Dictionary<GameObject, GameObject> _objPrefabMap = new();
 
-        public static void CreatePool(GameObject prefab, int defaultCapacity = 10, int maxSize = 5)
+        public static void CreatePool(GameObject prefab, int defaultCapacity = 10, int maxSize = 10)
         {
             if (!_poolsContainer)
             {
-                _poolsContainer = new GameObject("Object Pools");
+                _poolsContainer = new GameObject("Object Pool");
             }
 
             ObjectPool<GameObject> pool = new(
@@ -63,7 +63,7 @@ namespace CannonGame
             Destroy(obj);
         }
 
-        public static T SpawnObject<T>(GameObject obj, Vector3 position, Quaternion rotation) where T : Object
+        private static T SpawnObject<T>(GameObject obj, Vector3 position, Quaternion rotation) where T : Object
         {
             if (!_pools.ContainsKey(obj))
                 CreatePool(obj);
@@ -85,7 +85,21 @@ namespace CannonGame
                 return spawnedObject as T;
             }
 
-            return null; 
+            T component = spawnedObject.GetComponent<T>();
+
+            if (!component) return null;
+
+            return component;
+        }
+
+        public static T SpawnObject<T>(T objComponent, Vector2 position, Quaternion rotation) where T : Component
+        {
+            return SpawnObject<T>(objComponent.gameObject, position, rotation);
+        }
+
+        public static GameObject SpawnObject(GameObject obj, Vector2 position, Quaternion rotation)
+        {
+            return SpawnObject<GameObject>(obj, position, rotation);
         }
 
         public static void ReturnToPool(GameObject obj)
