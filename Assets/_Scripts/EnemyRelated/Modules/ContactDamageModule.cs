@@ -19,6 +19,7 @@ namespace CannonGame
 
             if (isPoolable)
             {
+                Debug.Log("Releasing object from ContactDamageModule");
                 ObjectPoolManager.ReturnToPool(gameObject);
                 return; 
             }

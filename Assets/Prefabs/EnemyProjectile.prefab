@@ -192,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0.6
   exclusionTag: Player
+  isPoolable: 1
 --- !u!1 &3054125679092218901
 GameObject:
   m_ObjectHideFlags: 0

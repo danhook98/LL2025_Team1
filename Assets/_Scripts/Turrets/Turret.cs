@@ -31,7 +31,7 @@ namespace CannonGame
         // Update is called once per frame
         void Update()
         {
-            if(targetEnemy == null)
+            if (targetEnemy == null)
             {
                 return;
             }
@@ -39,9 +39,10 @@ namespace CannonGame
             Vector2 direction = (targetEnemy.transform.position - transform.position).normalized;
             transform.up = direction;
 
-            if(Time.time > nextTimeToFire)
+            if (Time.time > nextTimeToFire)
             {
-                GameObject spawnedBullet = Instantiate(bullet, shootPoint.position, transform.rotation);
+                //GameObject spawnedBullet = Instantiate(bullet, shootPoint.position, transform.rotation);
+                GameObject spawnedBullet = ObjectPoolManager.SpawnObject(bullet, shootPoint.position, shootPoint.rotation);
                 nextTimeToFire = Time.time + 1 / fireRate;
                 anim.SetTrigger("Shoot");
             }
@@ -60,16 +61,16 @@ namespace CannonGame
                 {
                     closestDistance = Vector2.Distance(transform.position, enemy.transform.position);
                     closestEnemy = enemy.gameObject;
-				}
+                }
             }
             targetEnemy = closestEnemy;
-			Invoke("UpdateTarget", 1 / targetUpdateRate);
-		}
+            Invoke("UpdateTarget", 1 / targetUpdateRate);
+        }
 
-		private void OnDrawGizmosSelected()
-		{
+        private void OnDrawGizmosSelected()
+        {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, checkRadius);
-		}
-	}
+        }
+    }
 }

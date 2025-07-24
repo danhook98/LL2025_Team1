@@ -4,25 +4,21 @@ namespace CannonGame
 {
     public class ShooterModule : MonoBehaviour
     {
-        [SerializeField] Animator anim;
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-        
-        }
+        private Animator _animator; 
 
-        // Update is called once per frame
-        void Update()
+        private void Awake()
         {
-        
+            _animator = GetComponent<Animator>();
         }
 
         public void Shoot(GameObject bullet, Transform shootPoint)
         {
-            Instantiate(bullet, shootPoint.position, shootPoint.rotation);
-            if (anim)
+            //Instantiate(bullet, shootPoint.position, shootPoint.rotation);
+            ObjectPoolManager.SpawnObject(bullet, shootPoint.position, shootPoint.rotation);
+
+            if (_animator)
             {
-                anim.SetTrigger("Shoot");
+                _animator.SetTrigger("Shoot");
             }
         }
     }
