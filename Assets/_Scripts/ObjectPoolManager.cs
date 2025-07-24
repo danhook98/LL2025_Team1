@@ -92,12 +92,12 @@ namespace CannonGame
             return component;
         }
 
-        public static T SpawnObject<T>(T objComponent, Vector2 position, Quaternion rotation) where T : Component
+        public static T SpawnObject<T>(T objComponent, Vector3 position, Quaternion rotation) where T : Component
         {
             return SpawnObject<T>(objComponent.gameObject, position, rotation);
         }
 
-        public static GameObject SpawnObject(GameObject obj, Vector2 position, Quaternion rotation)
+        public static GameObject SpawnObject(GameObject obj, Vector3 position, Quaternion rotation)
         {
             return SpawnObject<GameObject>(obj, position, rotation);
         }
