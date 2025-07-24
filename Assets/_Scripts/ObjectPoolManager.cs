@@ -11,7 +11,7 @@ namespace CannonGame
         private static Dictionary<GameObject, ObjectPool<GameObject>> _pools = new();
         private static Dictionary<GameObject, GameObject> _objPrefabMap = new();
 
-        public static void CreatePool(GameObject prefab, int defaultCapacity = 10, int maxSize = 10)
+        public static void CreatePool(GameObject prefab)
         {
             if (!_poolsContainer)
             {
@@ -22,11 +22,8 @@ namespace CannonGame
                 createFunc: () => CreateObject(prefab),
                 actionOnGet: OnGetObject,
                 actionOnRelease: OnReleaseObject,
-                actionOnDestroy: OnDestroyObject,
-                collectionCheck: true,
-                defaultCapacity: defaultCapacity,
-                maxSize: maxSize
-                );
+                actionOnDestroy: OnDestroyObject
+            );
 
             _pools.Add(prefab, pool);
         }
@@ -48,14 +45,14 @@ namespace CannonGame
         {
             // Enable the object.
             //obj.SetActive(true);
-            Debug.Log("Getting object!");
+            //Debug.Log("Getting object!");
         }
 
         private static void OnReleaseObject(GameObject obj)
         {
             // Disable the object. 
             obj.SetActive(false);
-            Debug.Log("Releasing object!");
+            //Debug.Log("Releasing object!");
         }
 
         private static void OnDestroyObject(GameObject obj)
@@ -109,7 +106,7 @@ namespace CannonGame
             if (_pools.TryGetValue(prefab, out ObjectPool<GameObject> pool))
             {
                 pool.Release(obj);
-                Debug.Log("Releasing object back to the pool.");
+                // Debug.Log("Releasing object back to the pool.");
             }
         }
     }
