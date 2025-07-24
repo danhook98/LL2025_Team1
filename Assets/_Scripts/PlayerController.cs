@@ -36,6 +36,7 @@ namespace CannonGame
 
             // For testing only. 
             //ObjectPoolManager.CreatePool(projectilePrefab.gameObject, Vector3.zero, Quaternion.identity);
+            ObjectPoolManager.CreatePool(projectilePrefab.gameObject, 10, 10);
         }
 
         private void Update()
