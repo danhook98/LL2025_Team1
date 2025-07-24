@@ -171,6 +171,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3165071096645983254, guid: 417b4b9852b570846aa7893798c6d762, type: 3}
+      propertyPath: orbitSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165071096645983254, guid: 417b4b9852b570846aa7893798c6d762, type: 3}
+      propertyPath: spawnableTurrets.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165071096645983254, guid: 417b4b9852b570846aa7893798c6d762, type: 3}
+      propertyPath: 'spawnableTurrets.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7585975857331014886, guid: 5eaa226f48954f44a8a56497c5278dce, type: 3}
+    - target: {fileID: 3165071096645983254, guid: 417b4b9852b570846aa7893798c6d762, type: 3}
+      propertyPath: 'spawnableTurrets.Array.data[2]'
+      value: 
+      objectReference: {fileID: 7585975857331014886, guid: bb407ca59c38db74ebc9dddc3c68be6a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -500,6 +516,14 @@ PrefabInstance:
     - target: {fileID: 4510739215992945442, guid: 933c668361a1edf479d833e42eae27da, type: 3}
       propertyPath: m_Name
       value: WaveSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546909010578964749, guid: 933c668361a1edf479d833e42eae27da, type: 3}
+      propertyPath: baseSpawnRate
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546909010578964749, guid: 933c668361a1edf479d833e42eae27da, type: 3}
+      propertyPath: timeBetweenWaves
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6481193368876282938, guid: 933c668361a1edf479d833e42eae27da, type: 3}
       propertyPath: m_LocalPosition.x
