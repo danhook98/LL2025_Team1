@@ -1,8 +1,8 @@
-using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-using TMPro;
+using DG.Tweening;
+using JetBrains.Annotations;
 using System.Collections;
-using Unity.VisualScripting;
+using TMPro;
+using UnityEngine;
 
 namespace CannonGame
 {
@@ -11,7 +11,8 @@ namespace CannonGame
         //needed to disable powerup text to hide it
         public GameObject Poweruptxt;
         public GameObject Getpoweruptxt;
-        
+        public GameObject Shop;
+
         //gives access to the UI text
         public TMP_Text Score;
         public TMP_Text Highscore;
@@ -22,6 +23,10 @@ namespace CannonGame
         public float Totalscore = 0f;
 
         public float Totalhighscore;
+
+        //shop checks
+        public bool Shopbusy = false;
+        public bool Shopopen = false;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -58,7 +63,7 @@ namespace CannonGame
         public void ResetHighscore()
         {
             Totalhighscore = 0f;
-            //once resetted won't remember its previous highscore
+            //once reset won't remember its previous highscore
             PlayerPrefs.SetFloat("highscore", 0);
         }
 
@@ -78,6 +83,68 @@ namespace CannonGame
             yield return new WaitForSeconds(5f);
             Poweruptxt.SetActive(false);
             Getpoweruptxt.SetActive(false);
+        }
+
+        ///Attempting to make a base for the shop using the same script below
+        public void Openshop()
+        {
+            if ((!Shopbusy) && !Shopopen)
+            {
+                Debug.Log("welcome to shop");
+                //first number is distance you want moved (not the actual position) second is how long it takes to move that much (1 is a second 60 is a minute)
+                //DOMoveX uses global then local, use DOLocalMoveX if you want specific movement
+                Shop.transform.DOLocalMoveX(-200f, 1f);
+                StartCoroutine(ShopTransition());
+            }
+
+        }
+        public void Closeshop()
+        {
+            if ((!Shopbusy) && Shopopen)
+            {
+                Debug.Log("Bye bye");
+                Shop.transform.DOLocalMoveX(-400f, 0.5f);
+                StartCoroutine(ShopTransition());
+            }
+        }
+
+        IEnumerator ShopTransition()
+        {
+            Shopbusy = true;
+            yield return new WaitForSeconds(0.2f);
+            Shopbusy = false;
+            if (Shopopen)
+            {
+                yield return new WaitForSeconds(0.5f);
+                if (Shopopen) Shopopen = false;
+            }
+            else if (!Shopopen)
+            {
+                yield return new WaitForSeconds(1f);
+                if (!Shopopen) Shopopen = true;
+            }
+        }
+
+        public void BuyItem1()
+        {
+            if (Totalscore >= 5f)
+            {
+                Totalscore -= 5f;
+            }
+        }
+        public void BuyItem2()
+        {
+            if (Totalscore >= 10f)
+            {
+                Totalscore -= 10f;
+            }
+        }
+        public void BuyItem3()
+        {
+            if (Totalscore >= 15f)
+            {
+                Totalscore -= 15f;
+            }
         }
     }
 }
