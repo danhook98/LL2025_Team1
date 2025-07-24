@@ -101,6 +101,7 @@ namespace CannonGame
 
         public static void ReturnToPool(GameObject obj)
         {
+            if (!obj.activeSelf) return;
             if (!_objPrefabMap.TryGetValue(obj, out GameObject prefab)) return; 
 
             if (_pools.TryGetValue(prefab, out ObjectPool<GameObject> pool))

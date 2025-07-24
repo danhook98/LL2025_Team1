@@ -41,6 +41,7 @@ namespace CannonGame
 
         private void OnDisable()
         {
+            //StopCoroutine(VisibilityChecker());
             _collider2d.enabled = false;
             _rigidbody2d.linearVelocity = Vector3.zero;
             _trailRenderer.Clear();
@@ -54,7 +55,6 @@ namespace CannonGame
 
                 if (!Screen.safeArea.Contains(pos))
                 {
-                    _collider2d.enabled = false;
                     yield return _cullDelay;
                     Debug.Log("Releasing object from projectile");
                     ObjectPoolManager.ReturnToPool(gameObject);

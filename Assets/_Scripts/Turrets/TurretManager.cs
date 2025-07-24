@@ -27,7 +27,7 @@ namespace CannonGame
             turretHolder.Rotate(0, 0, orbitSpeed * Time.deltaTime);
             if (Input.GetKeyDown(KeyCode.Space))
             {
-				debugSpawnTurret.Invoke(2);
+				debugSpawnTurret.Invoke(0);
 			}
         }
 

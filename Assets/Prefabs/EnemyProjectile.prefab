@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchSpeed: 10
+  visibilityChecksPerSecond: 10
+  cullDelay: 0.5
 --- !u!50 &2035681606278902453
 Rigidbody2D:
   serializedVersion: 5
