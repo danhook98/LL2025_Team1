@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3172071732901136191}
   - component: {fileID: 810946309830571570}
   - component: {fileID: 5849236315956749994}
+  - component: {fileID: 8572767520355218547}
   m_Layer: 6
   m_Name: Charger Enemy
   m_TagString: Enemy
@@ -181,6 +182,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8572767520355218547}
+        m_TargetAssemblyTypeName: CannonGame.ScoreIncreaserModule, Assembly-CSharp
+        m_MethodName: Increase
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 100
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3172071732901136191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,3 +275,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8572767520355218547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362681577714429961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5462d31be37ef4abd7589c0b7211e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreEvent: {fileID: 11400000, guid: eabfc8a3da1b50a40bebfea40ead02ec, type: 2}
