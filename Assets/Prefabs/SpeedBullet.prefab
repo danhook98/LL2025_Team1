@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchSpeed: 15
+  visibilityChecksPerSecond: 10
+  cullDelay: 0.5
 --- !u!50 &2035681606278902453
 Rigidbody2D:
   serializedVersion: 5
@@ -192,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0.75
   exclusionTag: Enemy
+  isPoolable: 1
 --- !u!1 &3054125679092218901
 GameObject:
   m_ObjectHideFlags: 0

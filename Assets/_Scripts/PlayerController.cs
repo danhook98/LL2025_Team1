@@ -50,7 +50,9 @@ namespace CannonGame
 
             if (Input.GetMouseButton(0) && _nextFireTime < Time.time)
             {
-                Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+                //Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+
+                Projectile projectile = ObjectPoolManager.SpawnObject(projectilePrefab, firePoint.position, firePoint.rotation);
 
                 _nextFireTime = Time.time + fireDelay;
 

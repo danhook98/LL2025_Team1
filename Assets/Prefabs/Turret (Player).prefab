@@ -63,6 +63,8 @@ MonoBehaviour:
   playSFXEvent: {fileID: 11400000, guid: 09ba0dd42cc20d147bc9cf59a1a40f22, type: 2}
   shootSound: {fileID: 11400000, guid: 36922d0897856a34d80d35610ef19ce6, type: 2}
   onPlayerShoot: {fileID: 11400000, guid: 8080247a5ea94bf4e801e012dc098c8f, type: 2}
+  playerHurtEvent: {fileID: 11400000, guid: 9ba6caf2efbc8eb4abb27b1ac9459e2b, type: 2}
+  playerDeadEvent: {fileID: 11400000, guid: ce3fe2b1a824e9040b4714e9ae286f42, type: 2}
 --- !u!58 &4173427798890470948
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -127,6 +129,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7554296426955025206}
+        m_TargetAssemblyTypeName: CannonGame.PlayerController, Assembly-CSharp
+        m_MethodName: hurtEventInvoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealed:
     m_PersistentCalls:
       m_Calls: []
@@ -140,6 +154,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 8a52dcbabcf43684ba426a38305bbb8f, type: 2}
           m_ObjectArgumentAssemblyTypeName: CannonGame.Audio.AudioDataSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7554296426955025206}
+        m_TargetAssemblyTypeName: CannonGame.PlayerController, Assembly-CSharp
+        m_MethodName: DeadEventInvoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

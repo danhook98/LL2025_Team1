@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 5849236315956749994}
   - component: {fileID: 2535338974604313417}
   - component: {fileID: 3421432636975257615}
+  - component: {fileID: 5525405556028630532}
   m_Layer: 6
   m_Name: ShooterEnemy
   m_TagString: Enemy
@@ -212,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+  isPoolable: 1
   OnDamaged:
     m_PersistentCalls:
       m_Calls:
@@ -350,7 +352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c01e8d18fddf6489ef08d1e49f7c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 5849236315956749994}
 --- !u!114 &3421432636975257615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,3 +365,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreEvent: {fileID: 11400000, guid: eabfc8a3da1b50a40bebfea40ead02ec, type: 2}
+--- !u!114 &5525405556028630532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362681577714429961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad57e88468d55084091e66fe891cebb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

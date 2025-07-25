@@ -4,21 +4,27 @@ namespace CannonGame
 {
 	public class ContactDamageModule : MonoBehaviour
 	{
-		[SerializeField] float damage;
-		[SerializeField] string exclusionTag;
+		[SerializeField] private float damage;
+		[SerializeField] private string exclusionTag;
+        [SerializeField] private bool isPoolable = false; 
 
 		public void OnTriggerEnter2D(Collider2D collision)
 		{
-			if (!collision.CompareTag(exclusionTag) && exclusionTag != "")
-			{
-				return;
-			}
-			if (collision.gameObject.GetComponent<HealthSystem>() == null)
-			{
-				return;
-			}
-			collision.gameObject.GetComponent<HealthSystem>().TakeDamage(damage);
-			Destroy(gameObject);
-		}
+            if (!collision.CompareTag(exclusionTag) && exclusionTag != "") return;
+
+            if (collision.gameObject.TryGetComponent<HealthSystem>(out var healthSystem))
+            {
+                healthSystem.TakeDamage(damage);
+            }
+
+            if (isPoolable)
+            {
+                // Debug.Log("Releasing object from ContactDamageModule");
+                ObjectPoolManager.ReturnToPool(gameObject);
+                return; 
+            }
+
+            Destroy(gameObject);
+        }
 	}
 }
