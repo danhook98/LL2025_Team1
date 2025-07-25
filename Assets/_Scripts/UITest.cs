@@ -20,9 +20,9 @@ namespace CannonGame
         public TMP_Text GainedPowerupText;
 
         //keeps check on the scores
-        public float Totalscore = 0f;
+        public int Totalscore = 0;
 
-        public float Totalhighscore;
+        public int Totalhighscore;
 
         //shop checks
         public bool Shopbusy = false;
@@ -32,7 +32,7 @@ namespace CannonGame
         void Start()
         {
             ///loads players highscore on start
-            Totalhighscore = PlayerPrefs.GetFloat("highscore");
+            Totalhighscore = PlayerPrefs.GetInt("highscore");
         }
 
         // Update is called once per frame
@@ -44,27 +44,27 @@ namespace CannonGame
             Highscore.text = Totalhighscore.ToString();
 
             ///sets players highscore as current score if its higher then the current highscore
-            if (Totalscore > Totalhighscore) PlayerPrefs.SetFloat("highscore", Totalscore);
+            if (Totalscore > Totalhighscore) PlayerPrefs.SetInt("highscore", Totalscore);
         }
 
         //changes score for testing
         public void IncreaseScore()
         {
-            Totalscore += 1f;
+            Totalscore += 1;
         }
         public void DecreaseScore()
         {
-            Totalscore -= 1f;
+            Totalscore -= 1;
         }
         public void ResetScore()
         {
-            Totalscore = 0f;
+            Totalscore = 0;
         }
         public void ResetHighscore()
         {
-            Totalhighscore = 0f;
+            Totalhighscore = 0;
             //once reset won't remember its previous highscore
-            PlayerPrefs.SetFloat("highscore", 0);
+            PlayerPrefs.SetInt("highscore", 0);
         }
 
         //sorting out a base to tell the player they collected a powerup if we go random powerup spawn for this
@@ -127,23 +127,23 @@ namespace CannonGame
 
         public void BuyItem1()
         {
-            if (Totalscore >= 5f)
+            if (Totalscore >= 5)
             {
-                Totalscore -= 5f;
+                Totalscore -= 5;
             }
         }
         public void BuyItem2()
         {
-            if (Totalscore >= 10f)
+            if (Totalscore >= 10)
             {
-                Totalscore -= 10f;
+                Totalscore -= 10;
             }
         }
         public void BuyItem3()
         {
-            if (Totalscore >= 15f)
+            if (Totalscore >= 15)
             {
-                Totalscore -= 15f;
+                Totalscore -= 15;
             }
         }
     }
