@@ -1,23 +1,33 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool; 
+using UnityEngine.Pool;
 
 namespace CannonGame
 {
     public class ObjectPoolManager : MonoBehaviour
     {
-        private static GameObject _poolsContainer; 
+        private static GameObject _poolsContainer;
 
-        private static Dictionary<GameObject, ObjectPool<GameObject>> _pools = new();
-        private static Dictionary<GameObject, GameObject> _objPrefabMap = new();
+        private static Dictionary<string, GameObject> _parents; 
+
+        private static Dictionary<GameObject, ObjectPool<GameObject>> _pools;
+        private static Dictionary<GameObject, GameObject> _objPrefabMap;
+
+        private void Awake()
+        {
+            _pools = new();
+            _objPrefabMap = new();
+            _parents = new();
+
+            if (!_poolsContainer)
+            {
+                _poolsContainer = new GameObject("Pools");
+                _poolsContainer.transform.SetParent(transform, false);  
+            }
+        }
 
         public static void CreatePool(GameObject prefab)
         {
-            if (!_poolsContainer)
-            {
-                _poolsContainer = new GameObject("Object Pool");
-            }
-
             ObjectPool<GameObject> pool = new(
                 createFunc: () => CreateObject(prefab),
                 actionOnGet: OnGetObject,
@@ -65,6 +75,15 @@ namespace CannonGame
             if (!_pools.ContainsKey(obj))
                 CreatePool(obj);
 
+            string objectName = obj.name;
+
+            if (!_parents.ContainsKey(objectName))
+            {
+                GameObject parent = new GameObject(objectName);
+                parent.transform.SetParent(_poolsContainer.transform, false);
+                _parents.Add(objectName, parent);
+            }
+
             GameObject spawnedObject = _pools[obj].Get();
 
             if (!spawnedObject) return null; 
@@ -74,6 +93,7 @@ namespace CannonGame
                 _objPrefabMap.Add(spawnedObject, obj);
             }
 
+            spawnedObject.transform.SetParent(_parents[objectName].transform, false);
             spawnedObject.transform.SetPositionAndRotation(position, rotation);
             spawnedObject.SetActive(true);
 

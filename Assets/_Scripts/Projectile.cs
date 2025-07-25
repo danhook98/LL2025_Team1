@@ -56,7 +56,7 @@ namespace CannonGame
                 if (!Screen.safeArea.Contains(pos))
                 {
                     yield return _cullDelay;
-                    Debug.Log("Releasing object from projectile");
+                    // Debug.Log("Releasing object from projectile");
                     ObjectPoolManager.ReturnToPool(gameObject);
                 }
 
