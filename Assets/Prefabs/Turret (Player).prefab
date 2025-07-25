@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7749201616723909317}
   - component: {fileID: 6287371106623501319}
   - component: {fileID: 1973444482486129878}
+  - component: {fileID: 3165071096645983254}
+  - component: {fileID: 9205622695380465070}
   m_Layer: 0
   m_Name: Turret (Player)
   m_TagString: Player
@@ -37,6 +39,7 @@ Transform:
   - {fileID: 2282190334884657274}
   - {fileID: 4494839096769718241}
   - {fileID: 6191405187894640626}
+  - {fileID: 8175529711736900401}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7554296426955025206
@@ -56,11 +59,12 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2938688817486375890, guid: 9fa5391899d104447814dbe776576cc5, type: 3}
   fireDelay: 0.12
   gunSprite: {fileID: 4494839096769718241}
-  aimOffset: -90
   gunAnim: {fileID: 3141008505918435987}
   playSFXEvent: {fileID: 11400000, guid: 09ba0dd42cc20d147bc9cf59a1a40f22, type: 2}
-  shootSound: {fileID: 11400000, guid: c4271dbd33c15bf4ca2a0075afaa2c5c, type: 2}
+  shootSound: {fileID: 11400000, guid: 36922d0897856a34d80d35610ef19ce6, type: 2}
   onPlayerShoot: {fileID: 11400000, guid: 8080247a5ea94bf4e801e012dc098c8f, type: 2}
+  playerHurtEvent: {fileID: 11400000, guid: 9ba6caf2efbc8eb4abb27b1ac9459e2b, type: 2}
+  playerDeadEvent: {fileID: 11400000, guid: ce3fe2b1a824e9040b4714e9ae286f42, type: 2}
 --- !u!58 &4173427798890470948
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -109,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184a5f65cd1a4874db58def9cc800a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 20
   OnDamaged:
     m_PersistentCalls:
       m_Calls:
@@ -120,6 +124,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 674db12b52ebfc0479a042f0acb8d86f, type: 2}
           m_ObjectArgumentAssemblyTypeName: CannonGame.Audio.AudioDataSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7554296426955025206}
+        m_TargetAssemblyTypeName: CannonGame.PlayerController, Assembly-CSharp
+        m_MethodName: hurtEventInvoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -138,6 +154,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 8a52dcbabcf43684ba426a38305bbb8f, type: 2}
           m_ObjectArgumentAssemblyTypeName: CannonGame.Audio.AudioDataSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7554296426955025206}
+        m_TargetAssemblyTypeName: CannonGame.PlayerController, Assembly-CSharp
+        m_MethodName: DeadEventInvoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -183,6 +211,87 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3165071096645983254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562791250885628200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e721a40a46bd865459eefb9f3a42851d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnableTurrets:
+  - {fileID: 7585975857331014886, guid: 62d53f77f83a94a4594587e048b03246, type: 3}
+  - {fileID: 7585975857331014886, guid: 5eaa226f48954f44a8a56497c5278dce, type: 3}
+  - {fileID: 7585975857331014886, guid: bb407ca59c38db74ebc9dddc3c68be6a, type: 3}
+  turretHolder: {fileID: 8175529711736900401}
+  debugSpawnTurret: {fileID: 11400000, guid: beac3e46c7c9b994782dfd27b23804f1, type: 2}
+  spawnDistance: 2
+  maxTurretsPerRing: 16
+  ringSeperation: 1
+  orbitSpeed: 5
+--- !u!114 &9205622695380465070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562791250885628200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4970f5c13dc2bc748a76035ae2a2eefc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToListen: {fileID: 11400000, guid: beac3e46c7c9b994782dfd27b23804f1, type: 2}
+  onEventInvoked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3165071096645983254}
+        m_TargetAssemblyTypeName: CannonGame.TurretManager, Assembly-CSharp
+        m_MethodName: SpawnTurret
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &2987533277931593892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8175529711736900401}
+  m_Layer: 0
+  m_Name: Turrets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8175529711736900401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2987533277931593892}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2744049155106761561}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6676197091995993933
 GameObject:
   m_ObjectHideFlags: 0

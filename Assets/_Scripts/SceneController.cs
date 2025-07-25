@@ -1,10 +1,15 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 namespace CannonGame
 {
-    public class SceneManager : MonoBehaviour
+    public class SceneController : MonoBehaviour
     {
+        [SerializeField] private TextMeshProUGUI highscoreText;
+
+        private int _highscore;
+
         //references
         //public TMP_Text Highscore;
 
@@ -14,6 +19,8 @@ namespace CannonGame
         void Start()
         {
             //PlayerPrefs.GetInt("highscore");
+            _highscore = PlayerPrefs.GetInt("highscore", 0);
+            highscoreText.text = $"{_highscore}";
         }
 
         // Update is called once per frame
@@ -24,13 +31,13 @@ namespace CannonGame
 
         public void Play()
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("UI_TestScene");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         public void Quit()
         {
-            Application.Quit();
             Debug.Log("Quit");
+            Application.Quit();
         }
     }
 }

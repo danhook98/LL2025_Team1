@@ -21,8 +21,11 @@ namespace CannonGame
 
         [Header("Events")]
         [SerializeField] private VoidEvent onPlayerShoot;
+        [SerializeField] private FloatEvent playerHurtEvent;
+		[SerializeField] private VoidEvent playerDeadEvent;
 
-        private Camera _camera; 
+
+		private Camera _camera; 
         private Transform _transform;
 
         private Vector2 _mousePosition;
@@ -47,7 +50,9 @@ namespace CannonGame
 
             if (Input.GetMouseButton(0) && _nextFireTime < Time.time)
             {
-                Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+                //Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+
+                Projectile projectile = ObjectPoolManager.SpawnObject(projectilePrefab, firePoint.position, firePoint.rotation);
 
                 _nextFireTime = Time.time + fireDelay;
 
@@ -78,5 +83,13 @@ namespace CannonGame
 
             _transform.rotation = smoothedRotation;
         }
-    }
+        public void hurtEventInvoke(float amount)
+        {
+            playerHurtEvent.Invoke(amount);
+        }
+		public void DeadEventInvoke()
+		{
+			playerDeadEvent.Invoke();
+		}
+	}
 }
