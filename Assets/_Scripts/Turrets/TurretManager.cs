@@ -25,10 +25,10 @@ namespace CannonGame
         void Update()
         {
             turretHolder.Rotate(0, 0, orbitSpeed * Time.deltaTime);
-            if (Input.GetKeyDown(KeyCode.Space))
+            /*if (Input.GetKeyDown(KeyCode.Space))
             {
 				debugSpawnTurret.Invoke(0);
-			}
+			}*/
         }
 
         public void SpawnTurret(int turretIndex)
