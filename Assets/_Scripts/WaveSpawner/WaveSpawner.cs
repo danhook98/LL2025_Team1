@@ -97,9 +97,8 @@ namespace CannonGame
 
 		void SpawnEnemy(GameObject enemy)
 		{
-			GameObject spawnedEnemy = Instantiate(enemy, ChooseSpawnPosition(), Quaternion.identity, enemyContainer);
-
-
+			//GameObject spawnedEnemy = Instantiate(enemy, ChooseSpawnPosition(), Quaternion.identity, enemyContainer);
+            ObjectPoolManager.SpawnObject(enemy, ChooseSpawnPosition(), Quaternion.identity);
 		}
 
 		//returns position outside of screen and scales dynamically with screen size

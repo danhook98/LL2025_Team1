@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 810946309830571570}
   - component: {fileID: 5849236315956749994}
   - component: {fileID: 5232599964971185156}
+  - component: {fileID: 5809544972808105300}
   m_Layer: 6
   m_Name: Heavy Charger Enemy 1
   m_TagString: Enemy
@@ -145,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   exclusionTag: Player
+  isPoolable: 1
 --- !u!114 &4104257383370670630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  isPoolable: 1
   OnDamaged:
     m_PersistentCalls:
       m_Calls:
@@ -297,3 +300,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreEvent: {fileID: 11400000, guid: eabfc8a3da1b50a40bebfea40ead02ec, type: 2}
+--- !u!114 &5809544972808105300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362681577714429961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad57e88468d55084091e66fe891cebb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
